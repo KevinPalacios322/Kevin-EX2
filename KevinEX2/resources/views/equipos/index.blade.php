@@ -44,7 +44,14 @@
                     <td>{{ $equipo->estado }}</td>
                     <td>{{ $equipo->created_at }}</td>
                     <td>{{ $equipo->updated_at }}</td>
-                    <td><a href="{{ route('equipos.edit', $equipo) }}">Actualizar</a></td>
+                    <td>
+                        <a href="{{ route('equipos.edit', $equipo) }}">Actualizar</a>
+                        <form method="POST" action="{{ route('equipos.destroy', $equipo) }}" onsubmit="return confirm('¿Seguro que deseas eliminar este equipo?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>

@@ -56,4 +56,11 @@ class EquipoController extends Controller
 
         return redirect()->route('equipos.index')->with('mensaje', 'Equipo actualizado correctamente.');
     }
+
+    public function destroy(Equipo $equipo): RedirectResponse
+    {
+        $equipo->delete();
+
+        return redirect()->route('equipos.index')->with('mensaje', 'Equipo eliminado correctamente.');
+    }
 }

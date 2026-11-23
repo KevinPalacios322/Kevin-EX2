@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/equipos/{equipo}/editar', [EquipoController::class, 'edit'])->name('equipos.edit');
     Route::put('/equipos/{equipo}', [EquipoController::class, 'update'])->name('equipos.update');
+    Route::delete('/equipos/{equipo}', [EquipoController::class, 'destroy'])->name('equipos.destroy');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
