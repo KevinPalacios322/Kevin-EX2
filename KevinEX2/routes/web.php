@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Models\Equipo;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -9,7 +10,11 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', fn () => view('welcome'))->name('dashboard');
-    Route::get('/welcome', fn () => redirect()->route('dashboard'))->name('welcome');
-    Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('/dashboard', function () {
+        return view('equipos.index', [
+            'equipos' => Equipo::query()->orderBy('id')->limit(10)->get(),
+        ]);
+    })->name('dashboard');
+
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });

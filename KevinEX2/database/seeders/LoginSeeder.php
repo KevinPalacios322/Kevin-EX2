@@ -14,9 +14,9 @@ class LoginSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = new User();
-        $user->usuario = 'admin';
-        $user->password = Hash::make('12345678');
-        $user->save();  
+        User::firstOrCreate(
+            ['usuario' => 'admin'],
+            ['password' => Hash::make('12345678')],
+        );
     }
 }
