@@ -8,6 +8,12 @@
 <body>
     <h1>Equipos</h1>
 
+    @if (session('mensaje'))
+        <p>{{ session('mensaje') }}</p>
+    @endif
+
+    <p><a href="{{ route('equipos.create') }}">Crear equipo</a></p>
+
     <form method="POST" action="{{ route('logout') }}">
         @csrf
         <button type="submit">Cerrar sesión</button>
