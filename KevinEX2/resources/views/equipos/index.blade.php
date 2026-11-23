@@ -30,6 +30,7 @@
                 <th>Estado</th>
                 <th>Creado</th>
                 <th>Actualizado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -43,10 +44,11 @@
                     <td>{{ $equipo->estado }}</td>
                     <td>{{ $equipo->created_at }}</td>
                     <td>{{ $equipo->updated_at }}</td>
+                    <td><a href="{{ route('equipos.edit', $equipo) }}">Actualizar</a></td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8">No hay equipos registrados.</td>
+                    <td colspan="9">No hay equipos registrados.</td>
                 </tr>
             @endforelse
         </tbody>
